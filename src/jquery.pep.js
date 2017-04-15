@@ -36,6 +36,7 @@
     easing:                         null,
     rest:                           function(){},
     moveTo:                         false,
+    moveToUsingTransforms:          false,
     callIfNotStarted:               ['stop', 'rest'],
     startThreshold:                 [0,0],
     grid:                           [1,1],
@@ -394,7 +395,11 @@
               if ( this.options.axis  === 'x' ) dy = 0;
               if ( this.options.axis  === 'y' ) dx = 0;
 
-              this.moveToUsingTransforms( dx, dy );
+              if (typeof this.options.moveToUsingTransforms === 'function') {
+                this.options.moveToUsingTransforms(this, dx, dy);
+              } else {
+                 this.moveToUsingTransforms(dx, dy);
+              }
             }
   };
 
@@ -680,7 +685,11 @@
 
   Pep.prototype.revert = function() {
     if ( this.shouldUseCSSTranslation() ){
-      this.moveToUsingTransforms(-this.xTranslation(),-this.yTranslation());
+      if (typeof this.options.moveToUsingTransforms === 'function') {
+        this.options.moveToUsingTransforms(this, -this.xTranslation(),-this.yTranslation());
+      } else {
+        this.moveToUsingTransforms(-this.xTranslation(),-this.yTranslation());
+      }
     }
 
     if (this.options.place) {
