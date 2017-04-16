@@ -1,0 +1,24 @@
+{
+  "name": "pep",
+  "description": "Kinetic drag for mobile & desktop",
+  "main": "",
+  "authors": [
+    "Brian Gonzalez"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "drag",
+    "touch",
+    "mobile",
+    "kinetic",
+    "inertia"
+  ],
+  "homepage": "https://github.com/Swurveys/jquery.pep.js",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
